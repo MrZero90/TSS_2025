@@ -1,0 +1,59 @@
+package view;
+
+import model.Brano;
+import model.Display;
+import model.Playlist;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Playlist playlist = new Playlist("Brani per chilling");
+        Display display = new Display();
+        Scanner s = new Scanner(System.in);
+
+        Brano b1 = new Brano("Billie Eilish", "Birds of a feather", "Pop Music", 210);
+        Brano b2 = new Brano("Lady Gaga", "Abracadabra", "Dance Pop", 223);
+        Brano b3 = new Brano("Arctic Monkeys", "I wanna be yours", "Indie Rock", 183);
+
+        playlist.addBrano(b1);
+        playlist.addBrano(b2);
+        playlist.addBrano(b3);
+
+        boolean chiudiApp = false;
+        while(!chiudiApp){
+            display.mostraOpzioniMenuIniziale();
+            String opzioneScelta = s.nextLine();
+            switch(opzioneScelta){
+                case "1":
+                    display.mostraBraniNellaPlaylist(playlist);
+                    int indexCanzoneDaAvviare = s.nextInt();
+                    s.nextLine();
+                    playlist.brani.get(indexCanzoneDaAvviare-1).play();
+                    break;
+                case "2":
+                    display.richiediCanzoneDaAggiungere();
+                    Brano brano = new Brano(s.nextLine());
+                    playlist.addBrano(brano);
+                    break;
+                case "3":
+                    display.richiediCanzoneDaRimuovere(playlist);
+                    int indexCanzoneDaRimuovere = (s.nextInt()) - 1;
+                    s.nextLine();
+                    playlist.removeBrano(indexCanzoneDaRimuovere);
+                    break;
+                case "4":
+                    System.out.println("Chiusura in corso...");
+                    System.out.println("A dopo.");
+                    chiudiApp = true;
+                    break;
+                default:
+                    System.out.println("Scelta non valida");
+            }
+        }
+
+    }
+
+}

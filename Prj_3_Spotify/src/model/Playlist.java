@@ -1,0 +1,77 @@
+package model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Playlist {
+
+    // proprietá
+    String nomePlaylist;
+    public List<Brano> brani = new ArrayList<Brano>();
+    int durataTotaleMinuti = 0;
+    int numeroBrani = 0;
+
+    // costruttori
+    public Playlist() {
+    }
+
+    public Playlist(String nomePlaylist) {
+        this.nomePlaylist = nomePlaylist;
+    }
+
+    // metodi
+    @Override
+    public String toString() {
+        return "Playlist{" +
+                "nomePlaylist='" + nomePlaylist + '\'' +
+                ", brani=" + brani +
+                ", durataTotaleMinuti=" + durataTotaleMinuti +
+                ", numeroBrani=" + numeroBrani +
+                '}';
+    }
+
+    public void addBrano(Brano song){
+        boolean branoTrovato = false;
+        for(Brano brano : brani){
+            if(brano.titolo.equalsIgnoreCase(song.titolo)){
+                System.out.println("Questo brano é giá nella playlist");
+                branoTrovato = true;
+                break;
+            }
+        }
+        if(!branoTrovato) {
+            System.out.println("Brano '" + song.titolo + "' aggiunto alla playlist");
+            brani.add(song);
+            setDurataTotaleMinuti(true, song);
+        }
+    }
+
+    public void removeBrano(int index){
+        if(brani.get(index) != null) {
+            setDurataTotaleMinuti(false, brani.get(index));
+            brani.remove(index);
+        }else {
+            System.out.println("Brano non trovato");
+        }
+    }
+
+    public void infoPlaylist(){
+        System.out.println(
+                "Playlist{" +
+                "nomePlaylist='" + nomePlaylist + '\'' +
+                ", brani=" + brani +
+                ", durataTotaleMinuti=" + durataTotaleMinuti +
+                ", numeroBrani=" + numeroBrani +
+                '}');
+    }
+
+    public void setDurataTotaleMinuti(boolean aggiungendo, Brano brano){
+
+        if(aggiungendo) {
+            this.durataTotaleMinuti += brano.durataMinuti;
+        }else{
+            this.durataTotaleMinuti -= brano.durataMinuti;
+        }
+    }
+
+}
