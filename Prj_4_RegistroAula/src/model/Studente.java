@@ -1,0 +1,66 @@
+package model;
+
+public class Studente {
+
+    /**
+     * nome
+     * cognome
+     * matricola
+     * corso
+     * contatore (all'occorrenza)
+     */
+
+    private String nome;
+    private String cognome;
+    private String matricola;
+    private String corso;
+    private static int contatore = 1;
+
+    public Studente() {
+        this.matricola = String.valueOf(contatore++);
+
+    }
+
+    @Override
+    public String toString() {
+        return "Studente{" +
+                "nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", matricola='" + matricola + '\'' +
+                ", corso='" + corso + '\'' +
+                '}';
+
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
+
+    public String getMatricola() {
+        return matricola;
+    }
+
+    public void setMatricola(String matricola) {
+        this.matricola = matricola;
+    }
+
+    public String getCorso() {
+        return corso;
+    }
+
+    public void setCorso(String corso) {
+        this.corso = corso;
+    }
+}
