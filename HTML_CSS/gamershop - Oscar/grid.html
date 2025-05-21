@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <style>
+        .container {
+            width: 1170px;
+            margin: 0 auto;
+            padding: 0 1rem 0 1rem;
+            overflow: hidden;
+        }
+
+        .grid-container {
+            display: grid;
+
+            /* grid-template-columns: 300px 300px 300px; misura assoluta */
+            /* grid-template-columns: 1fr 1fr 1fr; misura relativa, 1fr = 1 frazione */
+            grid-template-columns: repeat(12, 1fr); /* quante colonne voglio creare | quale saranno le loro dimensioni */
+            
+            grid-template-areas: 
+            "head head head head head head head head head head head head"
+            "indice indice indice sezione sezione sezione sezione sezione sezione sezione sezione sezione"
+            "footer footer footer footer footer footer footer footer footer footer footer footer"
+            ;
+
+            grid-template-rows: 100px 300px 100px;
+            /* grid-auto-rows: 50px; gestisce le righe in più che non sono previste */
+            gap: 1rem; /* definisce il gap(lo spazio) tra righe&colonne */
+        }
+
+        header{
+            /* grid-column: 1 / 13; */
+            /* grid-row: 1 / 2; */
+            grid-area: head;
+        }
+        
+        aside{
+            /* grid-column: 1 / 4; */
+            /* grid-row: 2 / 3; */
+            grid-area: indice;
+        }
+        
+        section{
+            /* grid-column: 4 / 13; */
+            /* grid-row: 2 / 3; */
+            grid-area: sezione;
+        }
+        
+        footer{
+            /* grid-column: 1 / 13; */
+            /* grid-row: 3 / 4; */
+            grid-area: footer;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Grid layout</h1>
+        <div class="grid-container">
+            <!-- <div>Lorem ipsum dolor sit amet.</div>
+            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+            <div>Lorem, ipsum dolor.</div>
+            <div>Lorem ipsum dolor sit amet.</div>
+            <div>Lorem ipsum dolor sit amet, consectetur adipisicing.</div>
+            <div>Lorem, ipsum dolor.</div>
+            <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio!</div> -->
+            <header>
+                Lorem ipsum dolor sit amet.
+            </header>
+            <aside>
+                Lorem, ipsum dolor.
+            </aside>
+            <section>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non, eos.
+            </section>
+            <footer>
+                Lorem, ipsum dolor.
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

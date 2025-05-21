@@ -1,0 +1,200 @@
+:root{ /* ha come ambito tutto il documento HTML */
+    --primary: #0755C8;
+    --second: #efefef;
+    --primary-dark: #043278;
+}
+
+*, ::after, ::before{
+    box-sizing: border-box;
+
+}
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+    line-height: 1.47; /*distanza tra le righe di un paragrafo*/
+    font-size: 100%;
+}
+
+.container-main{
+    min-height: calc(100vh - 55.52px);
+}
+
+
+/* Spostato in griglia.css */
+/* .container{
+    width: 1170px;
+    margin: 0 auto;
+    padding: 0 1rem 0 1rem;
+    overflow: hidden;
+} */
+
+/* INIZIO GRIGLIA */
+/* .row{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -1rem 0 -1rem;
+} */
+
+/* 100%/12 = 8.33% */
+/* .col-1 {width: 8.33%; padding: 0 1rem 0 1rem;}
+.col-2 {width: 16.66%; padding: 0 1rem 0 1rem;}
+.col-3 {width: 25%; padding: 0 1rem 0 1rem;}
+.col-4 {width: 33.33%; padding: 0 1rem 0 1rem;}
+.col-5 {width: 41.66%; padding: 0 1rem 0 1rem;}
+.col-6 {width: 50%; padding: 0 1rem 0 1rem;}
+.col-7 {width: 58.33%; padding: 0 1rem 0 1rem;}
+.col-8 {width: 66.66%; padding: 0 1rem 0 1rem;}
+.col-9 {width: 75%; padding: 0 1rem 0 1rem;}
+.col-10 {width: 83.33%; padding: 0 1rem 0 1rem;}
+.col-11 {width: 91.66%; padding: 0 1rem 0 1rem;}
+.col-12 {width: 100%; padding: 0 1rem 0 1rem;} */
+/* FINE GRILIA */
+/* ------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6{
+    color: var(--primary);
+    margin-top: 0;
+}
+
+figure{
+    margin: 0;
+}
+
+a:link{
+    color: var(--primary);
+}
+
+a:hover{
+    color: var(--primary-dark);
+}
+
+.bg-nav{
+    background-color: var(--primary);
+}
+
+.navbar{
+    display: flex;
+}
+
+a.nav-item{
+    padding: .6rem 1.8rem;
+    text-decoration: none;
+    color: var(--second);
+}
+
+a.nav-item:hover, a.active{
+    background-color: var(--second);
+    color: var(--primary);
+}
+
+iframe{
+    width: 100%;
+    border: 0;
+}
+
+figcaption{
+    font-size: .875em;
+}
+
+.footer-container{
+    background-color: black;
+}
+
+.footer-container p, a.link-footer{
+    color: var(--second);
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+caption{
+    margin-bottom: 1rem;
+}
+
+table thead tr{
+    background-color: var(--primary);
+    color: var(--second);
+}
+
+table td, table th{
+    border: 1px solid lightgray;
+    padding: .6rem;
+}
+
+table td:nth-child(2){
+    text-align: center;
+}
+
+.section-bg:nth-child(even){
+    background-color: var(--second);
+}
+
+.section-bg{
+    padding: 2rem 0 2rem 0;
+}
+
+.img-responsive{
+    max-width: 100%;
+    height: auto;
+}
+
+.ul-list{
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.container-sub-list{
+    text-align: center;
+    border: 2px solid var(--primary);
+    padding: 2rem 1em;
+    font-size: 1.5rem;
+}
+
+/* INIZIO FORM */
+.form-group{
+    margin-bottom: 1rem;
+}
+
+.form-group input{
+    border: 1px solid lightgray;
+    padding: 8px 6px;
+}
+
+.form-group .label{
+    font-weight: bold;
+    font-size: .875rem;
+    display: block;
+}
+
+/* esempio mediaquery */
+/* body{
+    background-color: #828080;
+}
+
+@media(min-width:576px){
+    body{
+        background-color: #4c3434;
+    }
+}
+
+@media(min-width:998px){
+    body{
+        background-color: #140202;
+    }
+} 
+-------------------------------*/
+
+/* FINE FORM */
+
+.border-radius-5{
+    border-radius: 5px;
+}
+
+.border-radius-10{
+    border-radius: 10px;
+}

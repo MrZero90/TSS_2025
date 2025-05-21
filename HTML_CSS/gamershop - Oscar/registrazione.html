@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>Gamers shop: Registrazione</title>
+</head>
+<body>
+    <div class="container-main">
+        <nav class="bg-nav">
+            <div class="container">
+                <div class="navbar">
+                    <a class="nav-item" href="/index.html">Home</a>
+                    <a class="nav-item" href="/contatti.html">Contatti</a>
+                    <a class="nav-item active" href="#">Registrazione</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="section-bg">
+            <div class="container">
+                <header>
+                    <h1>Gamers shop</h1>
+                    <h2>Registrati alla nostra newsletter</h2>
+                </header>
+            </div>
+        </div>
+
+        <main>
+            <section class="section-bg">
+                <div class="container">
+                    <h2>Form di Registrazione</h2>
+                    <form action="/submit_registration" method="post">
+                        <div class="form-group">
+                            <label class="label" for="name">Nome:</label>
+                            <input class="border-radius-5" type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="label" for="email">Email:</label>
+                            <input class="border-radius-5" type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="label" for="birthday">Data di nascita:</label>
+                            <input class="border-radius-5" type="date" id="birthday" name="birthday">
+                        </div>
+                        <div class="form-group">
+                            <fieldset>
+                                <legend>Interessi:</legend>
+                                <input type="checkbox" id="interesse1" name="interessi" value="Sport">
+                                <label for="interesse1">Sport</label><br>
+                                <input type="checkbox" id="interesse2" name="interessi" value="Musica">
+                                <label for="interesse2">Musica</label><br>
+                                <input type="checkbox" id="interesse3" name="interessi" value="Cucina">
+                                <label for="interesse3">Cucina</label><br>
+                                <input type="checkbox" id="interesse4" name="interessi" value="Viaggi">
+                                <label for="interesse4">Viaggi</label><br>
+                                <input type="checkbox" id="interesse5" name="interessi" value="Tecnologia">
+                                <label for="interesse5">Tecnologia</label><br>
+                            </fieldset>
+                        </div>
+                        <div class="form-group">
+                            <label for="newsletter">
+                            <input type="checkbox" id="newsletter" name="newsletter" checked value="ok">
+                            Vuoi ricevere la nostra newsletter?</label>
+                        </div>
+                        <button class="register" type="submit">Registrati</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <footer class="footer-container">
+        <div class="container overflow-hidden">
+            <div class="row">
+                <div class="col-4">
+                    <p>Autore del sito: Claudio Currò</p>
+                </div>
+                <div class="col-4">
+                    <p>Email: <a class="link-footer" href="mailto:claudiocurrò@example.com">claudiocurrò@example.com</a></p>
+                </div>
+                <div class="col-4">
+                    <p>Ultimo aggiornamento: 21 maggio 2025</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
