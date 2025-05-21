@@ -11,13 +11,10 @@ public class App {
     public static void main(String[] args) {
 
         Registro registro = new Registro();
-        File elencoStudenti = new File("elencoStudenti_TSS.csv");
         Scanner s = new Scanner(System.in);
+        String pathNameSavingFile = "elencoStudenti_TSS.csv";
+        File elencoStudenti = new File(pathNameSavingFile);
         registro.caricaStudentiDaFile(elencoStudenti);
-//        registro.faiAppello();
-
-//        registro.stampaPresenti();
-//        registro.stampaAssenti();
 
         boolean chiudiApp = false;
         while(!chiudiApp){
@@ -42,7 +39,7 @@ public class App {
                     break;
                 case "4":
                     System.out.println("Stai aggiungendo uno studente al corso...");
-                    registro.aggiungiStudenteAlCorso();
+                    registro.aggiungiStudenteAlCorso(pathNameSavingFile);
                     break;
                 case "5":
                     System.out.println("Stai cercando uno studente tramite la sua matricola...");

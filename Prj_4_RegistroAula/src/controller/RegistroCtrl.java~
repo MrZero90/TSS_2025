@@ -16,7 +16,7 @@ public interface RegistroCtrl {
      * stampaPresenti()
      * stampaAssenti()
      */
-    public void aggiungiStudenteAlFile(String pathName, Studente studente);
+    public void aggiungiStudenteAlFile(File file, Studente studente);
     public void caricaStudentiDaFile(File file);
     public void faiAppello();
     public void stampaPresenti();

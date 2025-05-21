@@ -5,6 +5,8 @@ import controller.RegistroCtrl;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -22,6 +24,7 @@ public class Registro implements RegistroCtrl {
 
     List<Studente> studenti = new ArrayList<Studente>();
     List<String> presenze = new ArrayList<String>();
+    private String nomeFile;
 
 
     public Registro() {
@@ -36,7 +39,29 @@ public class Registro implements RegistroCtrl {
         return null;
     }
 
-    public void aggiungiStudenteAlCorso(){
+    public void aggiungiStudenteAlFile(String pathNameSavingFile, Studente studente){
+        if(studente == null){
+            throw new IllegalArgumentException("L'oggetto studente é null, fai le dovute verifiche");
+        }
+        try {
+            String cognome = studente.getCognome();
+            String nome = studente.getNome();
+            String nomeCorso = studente.getCorso();
+            String matricola = studente.getMatricola();
+
+            FileWriter file = new FileWriter(pathNameSavingFile, true);
+            if(new File(pathNameSavingFile).length() > 0){
+                file.append("\n");
+            }
+            file.append(cognome + "," + nome + "," + nomeCorso + "," + matricola);
+            file.close();
+            System.out.println("Studente aggiunto con successo al file");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void aggiungiStudenteAlCorso(String pathNameSavingFile){
         Scanner s = new Scanner(System.in);
         Studente nuovoStudente = new Studente();
         String nome = "";
@@ -71,7 +96,8 @@ public class Registro implements RegistroCtrl {
             System.out.println("Il nome del corso deve avere almeno 2 lettere");
         }
         this.studenti.add(nuovoStudente);
-        System.out.println("Studente aggiunto con successo");
+        System.out.println("Studente aggiunto al registro con successo");
+        aggiungiStudenteAlFile(pathNameSavingFile, nuovoStudente);
     }
 
     @Override
