@@ -17,4 +17,27 @@ public class Corso {
         this.registro = registro;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getPathNameSavingFile() {
+        return pathNameSavingFile;
+    }
+
+    public void setPathNameSavingFile(String pathNameSavingFile) {
+        this.pathNameSavingFile = pathNameSavingFile;
+    }
+
+    public Registro getRegistro() {
+        return registro;
+    }
+
+    public void setRegistro(Registro registro) {
+        this.registro = registro;
+    }
 }

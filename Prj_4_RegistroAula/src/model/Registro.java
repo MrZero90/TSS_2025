@@ -24,8 +24,6 @@ public class Registro implements RegistroCtrl {
 
     List<Studente> studenti = new ArrayList<Studente>();
     List<String> presenze = new ArrayList<String>();
-    private String nomeFile;
-
 
     public Registro() {
     }
