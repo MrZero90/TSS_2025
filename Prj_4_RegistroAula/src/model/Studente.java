@@ -15,10 +15,9 @@ public class Studente {
     private String matricola;
     private String corso;
     private static int contatore = 1;
-
+    
     public Studente() {
         this.matricola = String.valueOf(contatore++);
-
     }
 
     @Override
