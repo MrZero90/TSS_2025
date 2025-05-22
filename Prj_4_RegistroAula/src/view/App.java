@@ -64,7 +64,6 @@ public class App {
                     break;
                 case "4":
                     System.out.println("Stai aggiungendo uno studente al corso...");
-                    System.out.println("A quale corso vuoi aggiungere uno studente?");
                     registro.aggiungiStudenteAlCorso(pathNameSavingFile);
                     break;
                 case "5":
