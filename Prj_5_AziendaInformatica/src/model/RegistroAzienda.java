@@ -141,6 +141,8 @@ public class RegistroAzienda {
         return true;
     }
 
+//    Questa funzione deve rimuovere dal file la riga del dipendente da eliminare e eliminarlo anche dalla variabile dipendenti
+//    
 //    public boolean rimuoviDipendenteDaFile(String pathname, int matricola){
 //    	try {
 //    		FileWriter fw = new FileWriter(pathname);
@@ -151,6 +153,7 @@ public class RegistroAzienda {
 //				String line = s.nextLine();
 //				String matricolaDipendente = line.split(",")[0];
 //				if(String.valueOf(matricola).equals(matricolaDipendente)) {
+//    			
 //				}
 //			}
 //				
