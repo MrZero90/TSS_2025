@@ -1,154 +1,148 @@
-package model;
+package view;
 
-import view.MansioniDipendenti;
+import model.*;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+public class Main {
 
-public class RegistroAzienda {
+    public static void main(String[] args) {
 
-    private List<Dipendente> dipendenti = new ArrayList<Dipendente>();
-    private double stipendiPagati;
+        RegistroAzienda registro = new RegistroAzienda();
+        MessageUtilities utility = new MessageUtilities();
 
-    public RegistroAzienda(){
-    }
+        String pathNameRegistroDipendenti = "data/registroDipendenti.csv";
+        registro.creaFileRegistroDipendenti(pathNameRegistroDipendenti);
+        registro.caricaDatiDaFile(pathNameRegistroDipendenti);
 
-    public void creaFileRegistroDipendenti(String pathname){
-        try {
-            File file = new File(pathname);
-            if (file.createNewFile()) {
-                System.out.println("File registroDipendenti é stato creato con successo");
-            } else {
-                System.out.println("File registroDipendenti é giá esistente");
+
+        utility.stampaBenvenuto();
+
+        boolean closeApp = false;
+        int scelta;
+        Scanner s = new Scanner(System.in);
+
+        while(!closeApp){
+            try {
+                utility.stampaMenu();
+                scelta = s.nextInt();
+                s.nextLine();
+                System.out.println();
+            } catch (InputMismatchException e){
+                utility.stampaErroreOpzioneMenuErrata();
+                continue;
             }
-        } catch (IOException e){
-            System.out.println("Mi spiace non trovo il file registroDipendenti.csv dentro la directory '../data/'");
-        }
-    }
+            int nuovoTentativo;
 
-    public void caricaDatiDaFile(String pathname){
-        Dipendente dipendente = null;
-        try {
-            File file = new File(pathname);
-            Scanner s = new Scanner(file);
-
-            while(s.hasNextLine()){
-                String linea = s.nextLine();
-                String[] elementi = linea.split(",");
-                int matricola = Integer.parseInt(elementi[0]);
-                MansioniDipendenti mansione = MansioniDipendenti.valueOf(elementi[1]);
-                String cognome = elementi[2];
-                String nome = elementi[3];
-
-                switch (mansione) {
-                    case PROGRAMMATORE:
-                        dipendente = new Programmatore(nome, cognome);
+            switch(scelta){
+                case 1:
+                    if(registro.getDipendenti().isEmpty()){
+                        utility.stampaAziendaSenzaDipendenti();
                         break;
-                    case HR:
-                        dipendente = new HR(nome, cognome);
+                    }
+                    utility.stampaDipendentiDaList(registro.getDipendenti());
+                    break;
+                case 2:
+                    if(registro.getDipendenti().isEmpty()){
+                        utility.stampaAziendaSenzaDipendenti();
                         break;
-                    case MANAGER:
-                        dipendente = new Manager(nome, cognome);
+                    }
+                    do {
+                        utility.richiestaDipendenteByMatricola();
+                        try {
+                            int matricola = s.nextInt();
+                            s.nextLine();
+                            System.out.println();
+                            Dipendente dipendenteTrovato = registro.getDipendenteByMatricola(matricola);
+                            utility.stampaDipendenteByMatricola(matricola, dipendenteTrovato);
+                            break;
+                        } catch (InputMismatchException e) {
+                            s.nextLine();
+                            utility.stampaErroreMatricolaErrata();
+                            utility.richiestaNuovoTentativo();
+                            try {
+                                nuovoTentativo = s.nextInt();
+                                s.nextLine();
+                                System.out.println();
+                            } catch (InputMismatchException ex){
+                                s.nextLine();
+                                break;
+                            }
+                        }
+                    } while(nuovoTentativo == 1);
+                    break;
+                case 3:
+                    if(registro.getDipendenti().isEmpty()){
+                        utility.stampaAziendaSenzaDipendenti();
                         break;
-                    case SEGRETARIO:
-                        dipendente = new Segretario(nome, cognome);
+                    }
+                    do {
+                        try {
+                            utility.richiestaDipendenteByMansione();
+                            int numeroMansione = s.nextInt();
+                            s.nextLine();
+                            System.out.println();
+                            MansioniDipendenti mansioneScelta = MansioniDipendenti.values()[numeroMansione];
+                            List<Dipendente> dipendentiTrovati = registro.getDipendentiFilteredByMansione(mansioneScelta);
+                            utility.stampaDipendenteByMansione(dipendentiTrovati);
+                            break;
+                        } catch (InputMismatchException e){
+                            s.nextLine();
+                            utility.stampaErroreMansioneSoloInt();
+                            utility.richiestaNuovoTentativo();
+                            try {
+                                nuovoTentativo = s.nextInt();
+                                s.nextLine();
+                            } catch (InputMismatchException ex){
+                                s.nextLine();
+                                break;
+                            }
+                        } catch (ArrayIndexOutOfBoundsException e){
+                            utility.stampaErroreIndexMansioneErrata();
+                            utility.richiestaNuovoTentativo();
+                            try {
+                                nuovoTentativo = s.nextInt();
+                                s.nextLine();
+                            } catch (InputMismatchException ex){
+                                s.nextLine();
+                                break;
+                            }
+                        }
+                    } while(nuovoTentativo == 1);
+                    break;
+                case 4:
+                    if(registro.getDipendenti().isEmpty()){
+                        utility.stampaAziendaSenzaDipendenti();
                         break;
-                }
+                    }
+                    double totaleStipendi = registro.calcolaStipendioDipendenti();
+                    registro.pagaStipendiDipendenti(totaleStipendi);
+                    break;
+                case 5:
+                    Dipendente dipendente = utility.richiestaInformazioniNuovoDipendente();
+                    registro.aggiungiDipendenteAFile(pathNameRegistroDipendenti, dipendente);
+                    break;
+                case 6:
+                    if(registro.getDipendenti().isEmpty()){
+                        utility.stampaAziendaSenzaDipendenti();
+                        break;
+                    }
+                    System.out.println("Feature da implementare...");
+                    break;
+                case 7:
+                    closeApp = true;
+                    break;
+                default:
+                    System.out.println("Scegli una delle opzioni mostrate...");
 
-                dipendente.setMatricola(matricola);
-                dipendente.setCognome(cognome);
-                dipendente.setNome(nome);
-                dipendenti.add(dipendente);
-//                aggiungiDipendenteAFile(pathname, dipendente);
-            }
-        } catch (IOException e){
-            System.out.println("Qualcosa é andato storto durante la creazione/caricamento del file");
-        }
-    }
-
-    public List<Dipendente> getDipendenti() {
-        return dipendenti;
-    }
-
-    public void setDipendenti(List<Dipendente> dipendenti) {
-        this.dipendenti = dipendenti;
-    }
-
-    public List<Dipendente> getDipendentiFilteredByMansione(MansioniDipendenti mansione){
-        List<Dipendente> dipendentiUgualeRuolo = new ArrayList<Dipendente>();
-        try {
-            for (Dipendente dipendente : dipendenti) {
-                if (dipendente.getMansione().equals(mansione)) {
-                    dipendentiUgualeRuolo.add(dipendente);
-                }
-            }
-            return dipendentiUgualeRuolo;
-        } catch (IllegalArgumentException e) {
-            System.out.println("L'input deve matchare con esattezza le opzioni su display");
-            return null;
-        }
-    }
-
-    public Dipendente getDipendenteByMatricola(int matricola){
-        for(Dipendente dipendente : dipendenti){
-            if(dipendente.getMatricola() == matricola){
-                return dipendente;
             }
         }
-        return null;
+        utility.stampaArrivederci();
+
+//        System.out.println(registro.getDipendentiFilteredByClass("Manager"));
+
+
     }
-
-    public double calcolaStipendioDipendente(Dipendente dipendente){
-        return dipendente.getStipendioBase() * dipendente.getMoltiplicatoreStipendio();
-    }
-
-
-
-    public double calcolaStipendioDipendenti(){
-        double totaleStipendi = 0;
-        for(Dipendente dipendente : dipendenti){
-            totaleStipendi += calcolaStipendioDipendente(dipendente);
-        }
-        return totaleStipendi;
-    }
-
-    public void pagaStipendiDipendenti(double stipendioDipendenti){
-        stipendiPagati += stipendioDipendenti;
-        System.out.println("Hai pagato lo stipendio ai dipendenti");
-        System.out.println("Spesa totale: " + stipendioDipendenti);
-        System.out.println();
-    }
-
-
-    public boolean aggiungiDipendenteAFile(String pathname, Dipendente nuovoDipendente){
-        this.dipendenti.add(nuovoDipendente);
-        String matricola = String.valueOf(nuovoDipendente.getMatricola());
-        String mansione = String.valueOf(nuovoDipendente.getMansione());
-        String cognome = nuovoDipendente.getCognome();
-        String nome = nuovoDipendente.getNome();
-        try {
-            FileWriter file = new FileWriter(pathname, true);
-            file.write(matricola + "," + mansione + "," + cognome + "," + nome + "\n");
-            file.close();
-        } catch (IOException e){
-            System.out.println("Qualcosa é andato storto con il file " + pathname + ", verifica la sua esistenza");
-        }
-        return true;
-    }
-
-    public boolean rimuoviDipendente(int matricola){
-        for(Dipendente dipendente : dipendenti){
-            if(dipendente.getMatricola() == matricola){
-                dipendenti.remove(dipendente);
-                return true;
-            }
-        }
-        return false;
-    }
-
 }
