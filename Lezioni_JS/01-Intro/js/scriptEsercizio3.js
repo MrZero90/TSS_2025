@@ -29,8 +29,9 @@ let totaleSpesa = document.getElementById("totaleSpesa");
 let totale = 0;
 spesa.forEach(element => {
     for (let i = 0; i < element.length; i++) {
-        if(i == element.lastIndexOf){
+        if(i == (element.length - 1)){
             totale += element[i];
+            console.log(totale);
         }
     }
 });
