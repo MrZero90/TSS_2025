@@ -3,6 +3,7 @@ package model;
 import view.MansioniDipendenti;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -64,7 +65,6 @@ public class RegistroAzienda {
                 dipendente.setCognome(cognome);
                 dipendente.setNome(nome);
                 dipendenti.add(dipendente);
-//                aggiungiDipendenteAFile(pathname, dipendente);
             }
         } catch (IOException e){
             System.out.println("Qualcosa é andato storto durante la creazione/caricamento del file");
@@ -126,7 +126,7 @@ public class RegistroAzienda {
 
 
     public boolean aggiungiDipendenteAFile(String pathname, Dipendente nuovoDipendente){
-        this.dipendenti.add(nuovoDipendente);
+        this.dipendenti.add(nuovoDipendente);  
         String matricola = String.valueOf(nuovoDipendente.getMatricola());
         String mansione = String.valueOf(nuovoDipendente.getMansione());
         String cognome = nuovoDipendente.getCognome();
@@ -141,14 +141,35 @@ public class RegistroAzienda {
         return true;
     }
 
-    public boolean rimuoviDipendente(int matricola){
-        for(Dipendente dipendente : dipendenti){
-            if(dipendente.getMatricola() == matricola){
-                dipendenti.remove(dipendente);
-                return true;
-            }
-        }
-        return false;
-    }
+//    Questa funzione deve rimuovere dal file la riga del dipendente da eliminare e eliminarlo anche dalla variabile dipendenti
+//    
+//    public boolean rimuoviDipendenteDaFile(String pathname, int matricola){
+//    	try {
+//    		FileWriter fw = new FileWriter(pathname);
+//    		File file = new File(pathname);
+//			Scanner s = new Scanner(file);
+//    	
+//			while(s.hasNextLine()) {
+//				String line = s.nextLine();
+//				String matricolaDipendente = line.split(",")[0];
+//				if(String.valueOf(matricola).equals(matricolaDipendente)) {
+//    			
+//				}
+//			}
+//				
+//			
+//	        for(Dipendente dipendente : dipendenti){
+//	            if(dipendente.getMatricola() == matricola){
+//	                dipendenti.remove(dipendente);
+//	                return true;
+//	            }
+//	        }
+//    	} catch (FileNotFoundException e) {
+//    		e.printStackTrace();
+//    	} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		return false;
+//    }
 
 }
