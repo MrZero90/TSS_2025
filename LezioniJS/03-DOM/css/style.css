@@ -1,0 +1,12 @@
+.txtAlb{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.txtRed{
+    color: red;
+}
+
+.borderRed{
+    border-color: red;
+}
