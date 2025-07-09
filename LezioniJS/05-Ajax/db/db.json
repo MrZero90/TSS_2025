@@ -1,0 +1,33 @@
+{
+  "materie": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": "2",
+      "title": "javascript",
+      "author": "Claudio Currò"
+    },
+    {
+      "id": 3,
+      "title": "Spring",
+      "author": "Claudio Currò"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "autore": {
+    "nome": "Claudio Currò",
+    "data": "01/07/25"
+  }
+}
