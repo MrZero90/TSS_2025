@@ -1,0 +1,37 @@
+{
+    "users": [
+        {
+            "id": 0,
+            "nome": "Dario",
+            "cognome": "Mennillo",
+            "eta": 36,
+            "professione": "docente"
+        },
+        {
+            "id":1,
+            "nome": "Anna",
+            "cognome": "Rossi",
+            "eta": 30,
+            "professione": "studente"
+        }
+    ],
+
+    "msgs": [
+        {
+            "id": 0,
+            "txt": "Ciao, come stai?"
+        },
+        {
+            "id": 1,
+            "txt": "Tutto bene, grazie"
+        }
+    ],
+
+    "toDoItems": [
+        {
+            "id": 0,
+            "listItem": "Andare a pranzo con zia",
+            "itemDate": "20/08/2025"
+        }
+    ]
+}
