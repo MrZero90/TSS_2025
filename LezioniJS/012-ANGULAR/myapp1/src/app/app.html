@@ -1,0 +1,41 @@
+<h1> Titolo app: {{title}} - Autore: {{nomeAutore}} </h1>
+
+<!-- Per renderizzare un component chiamo il suo selettore 
+e faccio l'import all'interno del component che lo renderizza, in questo caso APP -->
+
+<div class="container">
+    
+    <div class="row">
+        <!-- <div class="col-4">
+            <app-card
+            [id]="mieiStudenti[0].id"
+            [nome]="mieiStudenti[0].nome"
+            [cognome]="mieiStudenti[0].cognome">
+          </app-card>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <app-card
+            [id]="mieiStudenti[1].id"
+            [nome]="mieiStudenti[1].nome"
+            [cognome]="mieiStudenti[1].cognome">
+          </app-card>
+        </div> -->
+
+        @for (stud of mieiStudenti; track $index) {
+          <div class="col-4">
+            <app-card
+            [id]=stud.id
+            [nome]=stud.nome
+            [cognome]=stud.cognome  
+            [materie]=stud.materie
+            >
+
+          </app-card>
+          </div>
+        }
+    </div>
+
+</div>

@@ -1,0 +1,19 @@
+<div class="card">
+    <h3 class="card-title">
+        Nome Studente: {{nome}} {{cognome}}</h3>
+    <p>Matricola: {{id}}</p>
+    <div class="card-body">
+        <p>Materia: </p>
+        @if (materie.length == 0) {
+            <p>Non ci sono materie assegnate</p>
+        }@else {
+            <ul>
+                @for (materia of materie; track $index) {
+                <li>{{materia}}</li>
+                }
+            </ul>
+        }
+        <!-- <img src="{{imgStud}}" alt="" class="card-img top">
+        <p class="card-text">{{descStud}}</p> -->
+    </div>
+</div>

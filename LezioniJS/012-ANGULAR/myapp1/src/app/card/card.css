@@ -1,0 +1,15 @@
+.card{
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 25%;
+    height: auto;
+}
+
+.card-body{
+    width: 100%;
+}
+
+.card-img{
+    width: 100%;
+    height: auto;
+}
