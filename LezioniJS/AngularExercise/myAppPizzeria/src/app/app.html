@@ -1,0 +1,42 @@
+<nav
+  class="navbar"
+  style="background-color: rgb(229, 225, 221)"
+  data-bs-theme="light"
+>
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="{{ imgLogo }}" alt="Pizza" width="60" height="48" />
+    </a>
+  </div>
+</nav>
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <h1>{{ webName }}</h1>
+    </div>
+  </div>
+
+  <br />
+
+  <div class="row">
+    <div class="col">
+      <h2>Scegli la tua pizza preferita</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    @for (pizza of pizzeInDb; track $index) {
+      <app-pizza class="col"
+        [pizza]=pizza
+        ></app-pizza>
+      }
+    </div>
+    
+    
+  </div>
+  
+  <!-- [img] = pizza.img
+  [nome] = pizza.nome
+  [descrizione] = pizza.descrizione
+  [ingredienti] = pizza.ingredienti -->
