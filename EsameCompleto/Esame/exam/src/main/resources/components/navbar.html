@@ -1,0 +1,24 @@
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" onclick="loadPage('home'); return false;">
+            <img src="../static/logo_esame.png" alt="Logo" width="60" height="60"
+                class="d-inline-block align-items-xxl-center">
+            Biglietteria On Line
+        </a>
+        <div class="d-flex gap-2">
+            
+            <a class="btn btn-outline-success" href="#" onclick="loadPage('home'); return false;">Home</a>
+            <a class="btn btn-outline-success" href="#"
+                onclick="loadPage('prenotazioni'); return false;">Prenotazioni</a>
+
+            <!-- Pulsante Login (visibile solo se non loggato) -->
+            <a id="loginBtn" class="btn btn-outline-success" href="#" onclick="loadPage('login'); return false;">Login</a>
+            <!-- Nome utente e Logout (visibili solo se loggato) -->
+            <span id="userInfo" class="navbar-text me-3" style="display: none;">
+                Ciao, <strong id="userName"></strong>
+            </span>
+            <a id="logoutBtn" class="btn btn-outline-danger" href="#" onclick="logout(); return false;" style="display: none;">Logout</a>
+            
+        </div>
+    </div>
+</nav>
